@@ -38,7 +38,7 @@ this.filterSelectObj = [
       options: []
     },  {
       name: 'FNAD',
-      columnProp: 'FNAD',
+      columnProp: 'fnad',
       options: []
     }
   ];
