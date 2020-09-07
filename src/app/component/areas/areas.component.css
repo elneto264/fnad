@@ -1,0 +1,19 @@
+.aint {
+    margin-top: 8em;
+    padding: 15px;
+    margin-left: 20px;
+}
+
+.aint h2 {
+    text-align: center;
+}
+
+.gmeta {
+    padding-left: 35px;
+    background-color: #28a745;
+    color: white;
+}
+
+.gmeta h2 {
+    text-align: center;
+}

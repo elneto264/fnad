@@ -1,0 +1,63 @@
+app-header {
+    z-index:2;
+    position: fixed;
+}
+
+.container-fluid {
+    padding: -5;
+}
+
+
+.imgportada {
+    margin-top: 1em;
+    width: 100%;
+    padding: 0;
+}
+
+.fnadDesc {
+    background-color: #28a745;
+    width: 100%;
+    /* border-radius: 20px; */
+    margin-top: .5em;
+    padding: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    color: white;
+}
+
+.fnadDesc h2 {
+    padding-top:15px;
+    text-align: center;
+}
+
+.carousel-item {
+    width: 1500px;
+    height: 700px;
+}
+
+.sobredesc {
+    width: 100%;
+    margin-top: 1.5em;
+    padding: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+}
+
+.sobredesc h2 {
+    text-align: center;
+}
+
+.logrodesc{
+    background-color: #28a745;
+    width: 100%;
+    margin-top: 1.5em;
+    padding: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    color:white;
+}
+
+ .logrodesc h2 {
+     padding-top:15px;
+    text-align: center;
+}

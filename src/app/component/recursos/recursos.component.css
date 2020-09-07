@@ -1,0 +1,23 @@
+.recursos {
+    margin-top: 8em;
+}
+
+.recursos h2 {
+    text-align: center;
+    padding: 10px;
+}
+
+.tablacon table {
+    width: 100%;
+}
+
+.nameFil {
+    width: 100%;
+    border: 1px solid black;
+}
+
+.nameFil button {
+    margin-top: 1em;
+    color: white;
+    background-color: red;
+}
