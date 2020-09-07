@@ -4,17 +4,17 @@
         <div class="col-md-6 offset-md-3">
             <form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)">
                 <div class="form-group">
-                    <label for="Email">Email</label>
-                    <input type="email" class="form-control" name="Email" aria-describedby="emailHelp" placeholder="Enter email" formControlName="Email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <label for="Email">Correo electronico</label>
+                    <input type="email" class="form-control" name="Email" aria-describedby="emailHelp" placeholder="digite su correo" formControlName="Email">
+                    <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electronico.</small>
                 </div>
                 <div class="form-group">
-                    <label for="fullname">Nombre Completo</label>
+                    <label for="fullname">Nombre completo</label>
                     <input type="text" class="form-control" name="Fullname" placeholder="Nombre Completo" formControlName="Fullname">
                 </div>
                 <div class="form-group">
-                    <label for="fullname">Telefono</label>
-                    <input type="text" class="form-control" name="Phone" placeholder="Telefono" formControlName="Phone">
+                    <label for="fullname">Teléfono</label>
+                    <input type="text" class="form-control" name="Phone" placeholder="Teléfono" formControlName="Phone">
                 </div>
                 <div class="form-group">
                     <label for="comment">Mensaje</label>
