@@ -32,6 +32,11 @@
 
             <table mat-table [dataSource]="dataSource">
 
+                <ng-container matColumnDef="tema">
+                    <th mat-header-cell *matHeaderCellDef> Tema</th>
+                    <td mat-cell *matCellDef="let element"> {{element.tema}} </td>
+                </ng-container>
+
                 <ng-container matColumnDef="autor">
                     <th mat-header-cell *matHeaderCellDef> Autor(es) </th>
                     <td mat-cell *matCellDef="let element"> {{element.autor}} </td>
@@ -47,16 +52,6 @@
                     <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
                 </ng-container>
 
-                <ng-container matColumnDef="nomRevista">
-                    <th mat-header-cell *matHeaderCellDef> Nom.Revista </th>
-                    <td mat-cell *matCellDef="let element"> {{element.nomRevista}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="editora">
-                    <th mat-header-cell *matHeaderCellDef> Editora </th>
-                    <td mat-cell *matCellDef="let element"> {{element.editora}} </td>
-                </ng-container>
-
                 <ng-container matColumnDef="volumen">
                     <th mat-header-cell *matHeaderCellDef> Volumen </th>
                     <td mat-cell *matCellDef="let element"> {{element.volumen}} </td>
@@ -67,9 +62,14 @@
                     <td mat-cell *matCellDef="let element"> {{element.doi}} </td>
                 </ng-container>
 
-                <ng-container matColumnDef="link">
-                    <th mat-header-cell *matHeaderCellDef> Link </th>
-                    <td mat-cell *matCellDef="let element"> {{element.link}} </td>
+                <ng-container matColumnDef="fnad">
+                    <th mat-header-cell *matHeaderCellDef> ¿FNAD? </th>
+                    <td mat-cell *matCellDef="let element"> {{element.fnad}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="enlace">
+                    <th mat-header-cell *matHeaderCellDef> Enlace </th>
+                    <td mat-cell *matCellDef="let element"> {{element.enlace}} </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
@@ -80,7 +80,7 @@
 
             <div class="propiedad">
                 <h2><strong>Propiedad Intelectual</strong></h2>
-                <p><br> Si entienden que algún documento tiene problemas de derecho de autor o propiedad intelectual, agradeceremos nos lo hagan saber de inmediato a <a href="mailto:info@fnad.org">info@fnad.org</a> para corregirlo. Gracias.&nbsp; </p>
+                <p><br> Si se entiende que algún documento tiene conflictos de derecho de autor o propiedad intelectual, agradeceremos nos lo hagan saber de inmediato a <a href="mailto:info@fnad.org">info@fnad.org</a> para corregirlo. Gracias.&nbsp; </p>
             </div>
 
         </div>

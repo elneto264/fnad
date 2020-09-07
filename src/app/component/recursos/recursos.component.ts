@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class RecursosComponent implements OnInit {
   filterValues = {};
   dataSource = new MatTableDataSource();
-  displayedColumns: string[] = ['autor', 'ano', 'titulo', 'nomRevista', 'editora', 'volumen','doi','link'];
+  displayedColumns: string[] = ['tema', 'autor', 'ano', 'titulo', 'volumen', 'doi', 'fnad', 'enlace'];
   filterSelectObj = [];
 
   constructor() {
@@ -17,6 +17,10 @@ export class RecursosComponent implements OnInit {
 // Object to create Filter for
 this.filterSelectObj = [
     {
+    name: 'TEMA',
+    columnProp: 'tema',
+    options: []
+    }, {
       name: 'AUTOR',
       columnProp: 'autor',
       options: []
@@ -29,20 +33,12 @@ this.filterSelectObj = [
       columnProp: 'titulo',
       options: []
     }, {
-      name: 'NOM.REVISTA',
-      columnProp: 'nomRevista',
-      options: []
-    }, {
-      name: 'EDITORA',
-      columnProp: 'editora',
-      options: []
-    }, {
-      name: 'VOLUMEN',
-      columnProp: 'volumen',
-      options: []
-    }, {
       name: 'DOI',
       columnProp: 'doi',
+      options: []
+    },  {
+      name: 'FNAD',
+      columnProp: 'FNAD',
       options: []
     }
   ];
@@ -72,6 +68,7 @@ getRemoteData() {
   const remoteRecursosData = [
     {
       "id": 1,
+      "tema": "Ecologia",
       "autor": "Leanne Graham",
       "ano": "Bret",
       "titulo": "Sincere@april.biz",
@@ -79,10 +76,12 @@ getRemoteData() {
       "editora": "hildegard.org",
       "volumen": "Active",
       "doi": "4564sghfks",
-      "link": "link"
+      "fnad": "si",
+      "enlace": "link"
     },
     {
       "id": 2,
+      "tema": "Biogeografia",
       "autor": "Leanne Graham, Leanne Graham, Leanne Graham",
       "ano": "Bret",
       "titulo": "Sincere@april.biz",
@@ -90,10 +89,12 @@ getRemoteData() {
       "editora": "hildegard.org",
       "volumen": "Active",
       "doi": "10.1145/1067268.1067287",
-      "link": "link"
+      "fnad": "no",
+      "enlace": "link"
     },
     {
       "id": 3,
+      "tema": "Botanica",
       "autor": "Leanne Graham",
       "ano": "XXXX",
       "titulo": "Sincere@april.biz",
@@ -101,10 +102,12 @@ getRemoteData() {
       "editora": "hildegard.org",
       "volumen": "Active",
       "doi": "4564sghfks",
-      "link": "link"
+      "fnad": "si",
+      "enlace": "link"
     },
     {
       "id": 4,
+      "tema": "Zoologia",
       "autor": "Leanne Graham",
       "ano": "Bret",
       "titulo": "Sincere@april.biz",
@@ -112,10 +115,11 @@ getRemoteData() {
       "editora": "hildegard.org",
       "volumen": "Active",
       "doi": "10.1145/1067268.1067287",
-      "link": "link"
+      "enlace": "link"
     },
     {
       "id": 5,
+      "tema": "Contaminacion",
       "autor": "Leanne Graham",
       "ano": "Bret",
       "titulo": "Actualización de la clasificación de la vegetación, según la clasificación de Häger y Zanoni, su distribución espacial y mapa de la vegetación de la República Dominicana",
@@ -123,10 +127,11 @@ getRemoteData() {
       "editora": "hildegard.org",
       "volumen": "Active",
       "doi": "4564sghfks",
-      "link": "link"
+      "enlace": "link"
     },
     {
       "id": 6,
+      "tema": "Pesca",
       "autor": "Leanne Graham",
       "ano": "Bret",
       "titulo": "Sincere@april.biz",
@@ -134,10 +139,11 @@ getRemoteData() {
       "editora": "hildegard.org",
       "volumen": "Active",
       "doi": "4564sghfks",
-      "link": "link"
+      "enlace": "link"
     },
     {
       "id": 7,
+      "tema": "Aquicultura",
       "autor": "Leanne Graham",
       "ano": "Bret",
       "titulo": "Sincere@april.biz",
@@ -145,10 +151,11 @@ getRemoteData() {
       "editora": "hildegard.org",
       "volumen": "Active",
       "doi": "4564sghfks",
-      "link": "link"
+      "enlace": "link"
     },
     {
       "id": 8,
+      "tema": "Energia",
       "autor": "Leanne Graham",
       "ano": "Bret",
       "titulo": "Sincere@april.biz",
@@ -156,10 +163,11 @@ getRemoteData() {
       "editora": "hildegard.org",
       "volumen": "Active",
       "doi": "4564sghfks",
-      "link": "link"
+      "enlace": "link"
     },
     {
       "id": 9,
+      "tema": "Tecnologia",
       "autor": "Leanne Graham",
       "ano": "Bret",
       "titulo": "Sincere@april.biz",
@@ -167,10 +175,11 @@ getRemoteData() {
       "editora": "hildegard.org",
       "volumen": "Active",
       "doi": "4564sghfks",
-      "link": "link"
+      "enlace": "link"
     },
     {
       "id": 10,
+      "tema": "Geografia",
       "autor": "Leanne Graham",
       "ano": "Bret",
       "titulo": "Sincere@april.biz",
@@ -178,7 +187,7 @@ getRemoteData() {
       "editora": "hildegard.org",
       "volumen": "Active",
       "doi": "4564sghfks",
-      "link": "link"
+      "enlace": "link"
     }
   ];
   this.dataSource.data = remoteRecursosData;
