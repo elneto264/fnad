@@ -19,7 +19,7 @@
 
             <div class="nameFil">
                 <mat-form-field *ngFor="let filter of filterSelectObj" style="margin-left: 15px;">
-                    <label>Filter {{filter.name}}</label>
+                    <label>Filtrar por {{filter.name}}</label>
                     <!-- <mat-label>Filter {{filter.name}}</mat-label> -->
                     <select matNativeControl name="{{filter.columnProp}}" [(ngModel)]="filter.modelValue" (change)="filterChange(filter,$event)">
                     <option value="">-- Select {{filter.name}} --</option>
@@ -27,7 +27,7 @@
                   </select>
                 </mat-form-field>
                 &nbsp;
-                <button mat-flat-button (click)="resetFilters()">Reset</button>
+                <button mat-flat-button (click)="resetFilters()">Limpiar</button>
             </div>
 
             <table mat-table [dataSource]="dataSource">
@@ -43,7 +43,7 @@
                 </ng-container>
 
                 <ng-container matColumnDef="titulo">
-                    <th mat-header-cell *matHeaderCellDef> Titulo </th>
+                    <th mat-header-cell *matHeaderCellDef> Titúlo </th>
                     <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
                 </ng-container>
 
@@ -62,7 +62,6 @@
                     <td mat-cell *matCellDef="let element"> {{element.volumen}} </td>
                 </ng-container>
 
-
                 <ng-container matColumnDef="doi">
                     <th mat-header-cell *matHeaderCellDef> DOI </th>
                     <td mat-cell *matCellDef="let element"> {{element.doi}} </td>
@@ -78,6 +77,11 @@
 
             </table>
 
+
+            <div class="propiedad">
+                <h2><strong>Propiedad Intelectual</strong></h2>
+                <p><br> Si entienden que algún documento tiene problemas de derecho de autor o propiedad intelectual, agradeceremos nos lo hagan saber de inmediato a <a href="mailto:info@fnad.org">info@fnad.org</a> para corregirlo. Gracias.&nbsp; </p>
+            </div>
 
         </div>
     </div>

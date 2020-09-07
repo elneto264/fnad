@@ -21,3 +21,16 @@
     color: white;
     background-color: red;
 }
+
+.propiedad {
+    margin-top: 5em;
+    text-align: center;
+}
+
+.propiedad h2 {
+    text-align: center;
+}
+
+table td {
+    padding: 5px;
+}

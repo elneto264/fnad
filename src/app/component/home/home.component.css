@@ -1,12 +1,11 @@
 app-header {
-    z-index:2;
+    z-index: 2;
     position: fixed;
 }
 
 .container-fluid {
     padding: -5;
 }
-
 
 .imgportada {
     margin-top: 1em;
@@ -26,7 +25,7 @@ app-header {
 }
 
 .fnadDesc h2 {
-    padding-top:15px;
+    padding-top: 15px;
     text-align: center;
 }
 
@@ -47,17 +46,22 @@ app-header {
     text-align: center;
 }
 
-.logrodesc{
+.logrodesc {
     background-color: #28a745;
     width: 100%;
     margin-top: 1.5em;
     padding: 5px;
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
-    color:white;
+    color: white;
 }
 
- .logrodesc h2 {
-     padding-top:15px;
+.logrodesc h2 {
+    padding-top: 15px;
     text-align: center;
+}
+
+.cajaAjus {
+    padding-left: 2em;
+    padding-right: 2em;
 }

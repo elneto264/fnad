@@ -21,11 +21,11 @@ this.filterSelectObj = [
       columnProp: 'autor',
       options: []
     }, {
-      name: 'ANO',
+      name: 'AÑO',
       columnProp: 'ano',
       options: []
     }, {
-      name: 'TITULO',
+      name: 'TITÚLO',
       columnProp: 'titulo',
       options: []
     }, {
