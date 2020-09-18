@@ -28,7 +28,7 @@ import { ContactService } from './contact.service';
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
