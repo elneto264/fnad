@@ -9,7 +9,7 @@ import { Recursos } from './recursos';
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
-const apiUrl = 'mongodb+srv://infofnad:biologia@fnad.ea9vu.mongodb.net/fnad?retryWrites=true&w=majority';
+const apiUrl = 'mongodb+srv://<user>:<pass>@fnad.ea9vu.mongodb.net/fnad?retryWrites=true&w=majority';
 
 
 @Injectable({
