@@ -51,18 +51,18 @@ this.filterSelectObj = [
 }
 
   ngOnInit(): void {
-    // this.getRemoteData();
-    // // Overrride default filter behaviour of Material Datatable
-    // this.dataSource.filterPredicate = this.createFilter();
-    this.api.getRecursos()
-    .subscribe((res: any) => {
-      this.dataSource = res;
-      console.log(this.dataSource);
-      this.isLoadingResults = false;
-    }, err => {
-      console.log(err);
-      this.isLoadingResults = false;
-    });
+    this.getRemoteData();
+    // Overrride default filter behaviour of Material Datatable
+    this.dataSource.filterPredicate = this.createFilter();
+    // this.api.getRecursos()
+    // .subscribe((res: any) => {
+    //   this.dataSource = res;
+    //   console.log(this.dataSource);
+    //   this.isLoadingResults = false;
+    // }, err => {
+    //   console.log(err);
+    //   this.isLoadingResults = false;
+    // });
   }
 
   // Get Uniqu values from columns to build filter
@@ -82,32 +82,32 @@ getRemoteData() {
 
 
   let remoteRecursosData = [
-    {
-      id: '',
-      tema: '',
-      autor: '',
-      ano: '',
-      titulo: '',
-      nomRevista: '',
-      editora: '',
-      volumen: '',
-      doi: '',
-      fnad: '',
-      enlace: ''
-    },
     // {
-    //   "id": 2,
-    //   "tema": "Biogeografia",
-    //   "autor": "Leanne Graham, Leanne Graham, Leanne Graham",
-    //   "ano": "Bret",
-    //   "titulo": "Sincere@april.biz",
-    //   "nomRevista": "1-770-736-8031 x56442",
-    //   "editora": "hildegard.org",
-    //   "volumen": "Active",
-    //   "doi": "10.1145/1067268.1067287",
-    //   "fnad": "no",
-    //   "enlace": "link"
+    //   id: '',
+    //   tema: '',
+    //   autor: '',
+    //   ano: '',
+    //   titulo: '',
+    //   nomRevista: '',
+    //   editora: '',
+    //   volumen: '',
+    //   doi: '',
+    //   fnad: '',
+    //   enlace: ''
     // },
+    {
+      "id": 1,
+      "tema": "Biogeografia",
+      "autor": "Leanne Graham, Leanne Graham, Leanne Graham",
+      "ano": "Bret",
+      "titulo": "Sincere@april.biz",
+      "nomRevista": "1-770-736-8031 x56442",
+      "editora": "hildegard.org",
+      "volumen": "Active",
+      "doi": "10.1145/1067268.1067287",
+      "fnad": "no",
+      "enlace": "link"
+    },
   ];
 
 
