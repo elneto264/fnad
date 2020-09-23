@@ -2,23 +2,54 @@
     <h2 class="text-center mb-5">Hoja de Contacto</h2>
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)">
+            <form (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="Email">Correo electrónico</label>
-                    <input type="email" class="form-control" name="Email" aria-describedby="emailHelp" placeholder="Digite su correo" formControlName="Email">
+                    <input 
+                    type="email" 
+                    class="form-control" 
+                    name="email" 
+                    aria-describedby="emailHelp" 
+                    placeholder="Digite su correo"  
+                    [(ngModel)]="email" 
+                    required email
+                    #emailInput="ngModel">
+                    <div class="help is-error" *ngIf="emailInput.invalid && emailInput.dirty">
+                        Escriba una dirección de correo electronico valida.
+                    </div>
                     <small id="emailHelp" class="form-text text-muted">Nunca compartiremos su correo electrónico.</small>
                 </div>
                 <div class="form-group">
                     <label for="fullname">Nombre completo</label>
-                    <input type="text" class="form-control" name="Fullname" placeholder="Nombre Completo" formControlName="Fullname">
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    name="fullname" 
+                    placeholder="Nombre Completo"  
+                    [(ngModel)]="fullname"
+                    required minlength="5"
+                    #fullnameInput="ngModel">
+
+                    <div class="help is-error" *ngIf="fullnameInput.invalid && fullnameInput.dirty">
+                        En el nombre completo es requerido un minimo de 5 caracteres.
+                    </div>
+
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="fullname">Teléfono</label>
                     <input type="text" class="form-control" name="Phone" placeholder="Teléfono" formControlName="Phone">
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="comment">Mensaje</label>
-                    <textarea class="form-control" formControlName="Comment" name="Comment"></textarea>
+                    <textarea 
+                    class="form-control" 
+                    name="message" 
+                    [(ngModel)]="message" 
+                    required
+                    #messageInput="ngModel"></textarea>
+                    <div class="help is-error" *ngIf="messageInput.invalid && messageInput.dirty">
+                        Cuentanos en que te podemos ayudar.
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>

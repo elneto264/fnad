@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import { ContactService } from '../../contact.service';
+
+
 
 
 @Component({
@@ -10,30 +10,27 @@ import { ContactService } from '../../contact.service';
 })
 export class ContactFormComponent implements OnInit {
 
-  FormData: FormGroup;
+  //FormData: FormGroup;
+  fullname: string;
+  email: string;
+  message: string;
 
-  constructor(private builder: FormBuilder , private contact: ContactService) { }
+  constructor() { }
 
-  onSubmit(FormData) {
-    console.log(FormData);
-    this.contact.PostMessage(FormData)
-    .subscribe(response => {
-    location.href = 'https://mailthis.to/elneto';
-    console.log(response);
-    }, error => {
-    console.warn(error.responseText);
-    console.log({ error });
-    });
-  }
+  
 
   ngOnInit(): void {
 
-    this.FormData = this.builder.group({
-      Fullname: new FormControl('', [Validators.required]),
-      Email: new FormControl('', [Validators.compose([Validators.required, Validators.email])]),
-      Phone: new FormControl('', [Validators.required]),
-      Comment: new FormControl('', [Validators.required])
-    });
+    // this.FormData = this.builder.group({
+    //   Fullname: new FormControl('', [Validators.required]),
+    //   Email: new FormControl('', [Validators.compose([Validators.required, Validators.email])]),
+    //   // Phone: new FormControl('', [Validators.required]),
+    //   Comment: new FormControl('', [Validators.required])
+    // });
+  }
+  onSubmit() {
+    const allInfo = `My name is ${this.fullname}. My email is ${this.email}. My message is ${this.message}`;
+    alert(allInfo); 
   }
 
 }
