@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AreasComponent } from './component/areas/areas.component';
@@ -16,6 +17,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactService } from './contact.service';
+import { AngularMaterialModule } from './material.module';
+import { ApiService } from './shared/api.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,7 @@ import { ContactService } from './contact.service';
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -37,10 +40,12 @@ import { ContactService } from './contact.service';
     MatTableModule,
     MatSelectModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularMaterialModule
   ],
   providers: [
-    ContactService
+    ContactService,
+    ApiService
   ],
   bootstrap: [AppComponent]
 })

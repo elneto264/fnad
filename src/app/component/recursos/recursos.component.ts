@@ -1,71 +1,86 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule, ViewChild } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { ApiService} from 'src/app/shared/api.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { ApiService } from '../../api.service';
+import { MatPaginator } from "@angular/material/paginator";
+import { Documento } from './../../shared/documento';
 
-
-
+@NgModule({
+  imports: [
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+   ],
+   providers: [ApiService]
+})
 
 
 @Component({
   selector: 'app-recursos',
   templateUrl: './recursos.component.html',
-  styleUrls: ['./recursos.component.css']
+  styleUrls: ['./recursos.component.css'],
 })
+
+
 export class RecursosComponent implements OnInit {
-  filterValues = {};
-  dataSource = new MatTableDataSource();
+  Documento= [];
+  DocumentoData : any = [];
+  dataSource: MatTableDataSource<Documento>;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns: string[] = ['tema', 'autor', 'ano', 'titulo', 'volumen', 'doi', 'fnad', 'enlace'];
   filterSelectObj = [];
-  isLoadingResults = true;
+  filterValues = {};
 
-  constructor( private api: ApiService) {
+  constructor(private documentoApi: ApiService) {
+    // this.documentoApi.GetDocumentos().subscribe(data => {
+    //   this.DocumentoData = data;
+    //   this.dataSource = new MatTableDataSource<Documento>(this.DocumentoData );
+    //   setTimeout(() => {
+    //     this.dataSource.paginator = this.paginator;
+    //   }, 0);
+    // })
+    
+    this.filterSelectObj = [
+      {
+      name: 'TEMA',
+      columnProp: 'tema',
+      options: []
+      }, {
+        name: 'AUTOR',
+        columnProp: 'autor',
+        options: []
+      }, {
+        name: 'AÑO',
+        columnProp: 'ano',
+        options: []
+      }, {
+        name: 'TITÚLO',
+        columnProp: 'titulo',
+        options: []
+      }, {
+        name: 'DOI',
+        columnProp: 'doi',
+        options: []
+      },  {
+        name: 'FNAD',
+        columnProp: 'fnad',
+        options: []
+      }
+    ];
 
-// Object to create Filter for
-this.filterSelectObj = [
-    {
-    name: 'TEMA',
-    columnProp: 'tema',
-    options: []
-    }, {
-      name: 'AUTOR',
-      columnProp: 'autor',
-      options: []
-    }, {
-      name: 'AÑO',
-      columnProp: 'ano',
-      options: []
-    }, {
-      name: 'TITÚLO',
-      columnProp: 'titulo',
-      options: []
-    }, {
-      name: 'DOI',
-      columnProp: 'doi',
-      options: []
-    },  {
-      name: 'FNAD',
-      columnProp: 'fnad',
-      options: []
-    }
-  ];
+  } 
+
+  
+  
+  ngOnInit() {
+    const documentosObservable = this.documentoApi.GetDocumentos();
+    documentosObservable.subscribe((documentoData: []) => {
+        this.Documento = documentoData;
+        console.log(this.Documento);
+    });
 }
 
-  ngOnInit(): void {
-    this.getRemoteData();
-    // Overrride default filter behaviour of Material Datatable
-    this.dataSource.filterPredicate = this.createFilter();
-    // this.api.getRecursos()
-    // .subscribe((res: any) => {
-    //   this.dataSource = res;
-    //   console.log(this.dataSource);
-    //   this.isLoadingResults = false;
-    // }, err => {
-    //   console.log(err);
-    //   this.isLoadingResults = false;
-    // });
-  }
-
-  // Get Uniqu values from columns to build filter
   getFilterObject(fullObj, key) {
     let uniqChk = [];
     fullObj.filter((obj) => {
@@ -77,205 +92,12 @@ this.filterSelectObj = [
     return uniqChk;
   }
 
-// Get remote serve data using HTTP call
-getRemoteData() {
-
-
-  let remoteRecursosData = [
-    // {
-    //   id: '',
-    //   tema: '',
-    //   autor: '',
-    //   ano: '',
-    //   titulo: '',
-    //   nomRevista: '',
-    //   editora: '',
-    //   volumen: '',
-    //   doi: '',
-    //   fnad: '',
-    //   enlace: ''
-    // },
-    {
-      "id": 1,
-      "tema": "Biogeografia",
-      "autor": "Leanne Graham, Leanne Graham, Leanne Graham",
-      "ano": "Bret",
-      "titulo": "Sincere@april.biz",
-      "nomRevista": "1-770-736-8031 x56442",
-      "editora": "hildegard.org",
-      "volumen": "Active",
-      "doi": "10.1145/1067268.1067287",
-      "fnad": "no",
-      "enlace": "link"
-    },{
-    "id": 2,
-      "tema": "Ecologia",
-      "autor": "Leanne Graham",
-      "ano": "Bret",
-      "titulo": "Sincere@april.biz",
-      "nomRevista": "1-770-736-8031 x56442",
-      "editora": "hildegard.org",
-      "volumen": "Active",
-      "doi": "4564sghfks",
-      "fnad": "si",
-      "enlace": "link"
-    },{
-    "id": 3,
-    "tema": "Botanica",
-    "autor": "Leanne Graham",
-    "ano": "XXXX",
-    "titulo": "Sincere@april.biz",
-    "nomRevista": "1-770-736-8031 x56442",
-    "editora": "hildegard.org",
-    "volumen": "Active",
-    "doi": "4564sghfks",
-    "fnad": "si",
-    "enlace": "link"
-  }, 
-  {
-    "id": 4,
-    "tema": "Zoologia",
-    "autor": "Leanne Graham",
-    "ano": "Bret",
-    "titulo": "Sincere@april.biz",
-    "nomRevista": "1-770-736-8031 x56442",
-    "editora": "hildegard.org",
-    "volumen": "Active",
-    "doi": "10.1145/1067268.1067287",
-    "enlace": "link"
-  },
-  {
-    "id": 5,
-    "tema": "Contaminacion",
-    "autor": "Leanne Graham",
-    "ano": "Bret",
-    "titulo": "Actualización de la clasificación de la vegetación, según la clasificación de Häger y Zanoni, su distribución espacial y mapa de la vegetación de la República Dominicana",
-    "nomRevista": "1-770-736-8031 x56442",
-    "editora": "hildegard.org",
-    "volumen": "Active",
-    "doi": "4564sghfks",
-    "enlace": "link"
-  },
-  {
-    "id": 6,
-    "tema": "Pesca",
-    "autor": "Leanne Graham",
-    "ano": "Bret",
-    "titulo": "Sincere@april.biz",
-    "nomRevista": "1-770-736-8031 x56442",
-    "editora": "hildegard.org",
-    "volumen": "Active",
-    "doi": "4564sghfks",
-    "enlace": "link"
-  },
-  {
-    "id": 7,
-    "tema": "Aquicultura",
-    "autor": "Leanne Graham",
-    "ano": "Bret",
-    "titulo": "Sincere@april.biz",
-    "nomRevista": "1-770-736-8031 x56442",
-    "editora": "hildegard.org",
-    "volumen": "Active",
-    "doi": "4564sghfks",
-    "enlace": "link"
-  },
-  {
-    "id": 8,
-    "tema": "Energia",
-    "autor": "Leanne Graham",
-    "ano": "Bret",
-    "titulo": "Sincere@april.biz",
-    "nomRevista": "1-770-736-8031 x56442",
-    "editora": "hildegard.org",
-    "volumen": "Active",
-    "doi": "4564sghfks",
-    "enlace": "link"
-  },
-  {
-    "id": 9,
-    "tema": "Tecnologia",
-    "autor": "Leanne Graham",
-    "ano": "Bret",
-    "titulo": "Sincere@april.biz",
-    "nomRevista": "1-770-736-8031 x56442",
-    "editora": "hildegard.org",
-    "volumen": "Active",
-    "doi": "4564sghfks",
-    "enlace": "link"
-  },
-  {
-    "id": 10,
-    "tema": "Geografia",
-    "autor": "Leanne Graham",
-    "ano": "Bret",
-    "titulo": "Sincere@april.biz",
-    "nomRevista": "1-770-736-8031 x56442",
-    "editora": "hildegard.org",
-    "volumen": "Active",
-    "doi": "4564sghfks",
-    "enlace": "link"
-  }
-  ];
-
-
-  this.dataSource.data = remoteRecursosData;
-  this.filterSelectObj.filter((o) => {
-    o.options = this.getFilterObject(remoteRecursosData, o.columnProp);
-    });
-  }
-
-// Called on Filter change
-filterChange(filter, event) {
-  //let filterValues = {};
-  this.filterValues[filter.columnProp] = event.target.value.trim().toLowerCase()
-  this.dataSource.filter = JSON.stringify(this.filterValues)
-}
-
-// Custom filter method fot Angular Material Datatable
-createFilter() {
-  let filterFunction = function (data: any, filter: string): boolean {
-    let searchTerms = JSON.parse(filter);
-    let isFilterSet = false;
-    for (const col in searchTerms) {
-      if (searchTerms[col].toString() !== '') {
-        isFilterSet = true;
-      } else {
-        delete searchTerms[col];
-      }
-    }
-
-    console.log(searchTerms);
-
-    let nameSearch = () => {
-      let found = false;
-      if (isFilterSet) {
-        for (const col in searchTerms) {
-          searchTerms[col].trim().toLowerCase().split(' ').forEach(word => {
-            if (data[col].toString().toLowerCase().indexOf(word) != -1 && isFilterSet) {
-              found = true
-            }
-          });
-        }
-        return found
-      } else {
-        return true;
-      }
-    }
-    return nameSearch()
-  }
-  return filterFunction;
-}
-
-// Reset table filters
-  resetFilters() {
-    this.filterValues = {};
-    this.filterSelectObj.forEach((value, key) => {
-      value.modelValue = undefined;
-    });
+resetFilters() {
+this.filterValues = {};
+this.filterSelectObj.forEach((value, key) => {
+ value.modelValue = undefined;
+   });
     this.dataSource.filter = '';
   }
-
-
 
 }
