@@ -1,19 +1,11 @@
-import { Component, OnInit, NgModule, ViewChild } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { ApiService} from 'src/app/shared/api.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from "@angular/material/paginator";
-import { Documento } from './../../shared/documento';
+import { Component, OnInit, ViewChild} from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+// import { MatTableDataSource } from '@angular/material/table/table-data-source';
+import { ActivatedRoute, Params } from '@angular/router';
+import { ApiService } from 'src/app/api.service';
 
-@NgModule({
-  imports: [
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
-   ],
-   providers: [ApiService]
-})
+
+
 
 
 @Component({
@@ -24,22 +16,15 @@ import { Documento } from './../../shared/documento';
 
 
 export class RecursosComponent implements OnInit {
-  Documento= [];
-  DocumentoData : any = [];
-  dataSource: MatTableDataSource<Documento>;
+
+  // dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator: MatPaginator;
   displayedColumns: string[] = ['tema', 'autor', 'ano', 'titulo', 'volumen', 'doi', 'fnad', 'enlace'];
   filterSelectObj = [];
   filterValues = {};
 
-  constructor(private documentoApi: ApiService) {
-    // this.documentoApi.GetDocumentos().subscribe(data => {
-    //   this.DocumentoData = data;
-    //   this.dataSource = new MatTableDataSource<Documento>(this.DocumentoData );
-    //   setTimeout(() => {
-    //     this.dataSource.paginator = this.paginator;
-    //   }, 0);
-    // })
+  lista: any[];
+  constructor( private ApiService: ApiService, private route: ActivatedRoute) {
     
     this.filterSelectObj = [
       {
@@ -73,13 +58,29 @@ export class RecursosComponent implements OnInit {
 
   
   
-  ngOnInit() {
-    const documentosObservable = this.documentoApi.GetDocumentos();
-    documentosObservable.subscribe((documentoData: []) => {
-        this.Documento = documentoData;
-        console.log(this.Documento);
+  ngOnInit() { 
+    this.route.params.subscribe(
+      (params:Params) => {
+        console.log(params);
+      }
+    )
+
+    this.ApiService.getDocumentos().subscribe((lista: any[]) => {
+      this.lista = lista;
+      
     });
-}
+  }
+
+  
+
+  // crearListaDocumentos(){
+  //   this.ApiService.crearDocumentos('prueba a ver').subscribe(( response: any)=> {
+  //       console.log(response);
+  //   })
+  // }
+
+
+
 
   getFilterObject(fullObj, key) {
     let uniqChk = [];
@@ -92,12 +93,12 @@ export class RecursosComponent implements OnInit {
     return uniqChk;
   }
 
-resetFilters() {
-this.filterValues = {};
-this.filterSelectObj.forEach((value, key) => {
- value.modelValue = undefined;
-   });
-    this.dataSource.filter = '';
-  }
+// resetFilters() {
+// this.filterValues = {};
+// this.filterSelectObj.forEach((value, key) => {
+//  value.modelValue = undefined;
+//    });
+//     this.dataSource.filter = '';
+//   }
 
 }

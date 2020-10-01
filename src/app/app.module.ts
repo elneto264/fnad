@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AreasComponent } from './component/areas/areas.component';
@@ -9,6 +10,7 @@ import { ContactFormComponent } from './component/contact-form/contact-form.comp
 import { HeaderComponent } from './component/header/header.component';
 import { HomeComponent } from './component/home/home.component';
 import { RecursosComponent } from './component/recursos/recursos.component';
+import { ListaComponent } from "./component/lista/lista.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
@@ -27,7 +29,8 @@ import { ApiService } from './shared/api.service';
     ContactFormComponent,
     HeaderComponent,
     HomeComponent,
-    RecursosComponent
+    RecursosComponent,
+    ListaComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [

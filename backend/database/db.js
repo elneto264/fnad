@@ -1,23 +1,20 @@
-// express = require('express');
-// router = express.Router();
-// mongoose = require('mongoose');
-// const db = ('mongodb+srv://infofnad:biologia@fnad.ea9vu.mongodb.net/fnad?retryWrites=true&w=majority',['libreriadb']);
-
-// router.get('/documentos', function(req, res, next){
-//   db.documetos.find(function(err, documento){
-//         if(err){
-//             res.send(err);
-//         }
-//         res.json(documento);
-//   });
-    
-// });
+const { Module } = require('module');
+const mongoose = require('mongoose');
+const { Documento } = require('./model/documentos');
 
 
-// module.exports = router;
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb+srv://infofnad:biologia@fnad.ea9vu.mongodb.net/fnad?retryWrites=true&w=majority', {useNewUrlParser: true})
+  .then(() => { console.log('se conecto a la base de datos');
+  }).catch((e) =>{ console.log(" Error al conectarse a la base de datos");
+  console.log(e);
+  });
 
+  // para evitar los warning de mongoose
 
-module.exports = {
-    mongo: 'mongodb+srv://infofnad:biologia@fnad.ea9vu.mongodb.net/fnad?retryWrites=true&w=majority'
-    //mongodb://localhost:27017/angular8mean
+  mongoose.set('useCreateIndex', true);
+  mongoose.set('useFindAndModify', false);
+
+  module.exports = {
+    mongoose
   };

@@ -1,114 +1,88 @@
-let express = require('express'),
-  path = require('path'),
-  mongoose = require('mongoose'),
-  cors = require('cors'),
-  bodyParser = require('body-parser'),
-  dataBaseConfig = require('./database/db');
-
-const documentoRoute = require('./routes/documento.route')
-// Connecting mongoDB
-const { MongoClient } = require("mongodb");
-const url = "mongodb+srv://infofnad:biologia@fnad.ea9vu.mongodb.net/fnad?retryWrites=true&w=majority";
-const client = new MongoClient(url);
-const dbName = "libreriadb";
-async function run() {
-    try {
-        await client.connect(dataBaseConfig);
-        console.log("Connected correctly to server");
-        
-        //console.log(client);
-        const db = client.db(dbName);
-
-         // Use the collection "people"
-         const col = db.collection("documentos");
-         const myDoc = await col.findOne();
-         console.log(myDoc);
-         mongoose.connect(dataBaseConfig.mongo, {
-          useNewUrlParser: true,
-          useUnifiedTopology:true,
-          useFindAndModify: false
-        }).then(() => {
-            console.log('Database conectada ')
-            //console.log(Documentos.db)
-          },
-          error => {
-            console.log('Could not connected to database : ' + error)
-          }
-        )
-
-
-        
-
-    } catch (err) {
-        console.log(err.stack);
-        // error handler
-    app.use(function (err, req, res, next) {
-      console.error(err.message);
-      if (!err.statusCode) err.statusCode = 500;
-      res.status(err.statusCode).send(err.message);
-    });
-    }
-    finally {
-        //await client.close();
-        
-    }
-}
-
-// Set up express js port
-const documentotRoute = require('./routes/documento.route')
-
+const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+const { mongoose } = require('./database/db');
+
+
+/* cargar los modulos desde el archivo index.js en models*/
+const { Documento } = require('./database/model');
+
+
+// cargar los middlewares
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
-app.use(cors());
 
 
-// Setting up static directory
-app.use(express.static(path.join(__dirname, 'dist/fnad')));
-
-
-// RESTful API root
-app.use('/api', documentoRoute)
-
-// PORT
-const port = process.env.PORT || 8000;
-
-app.listen(port, () => {
-  console.log('Connected to port ' + port)
-  
-})
-
-// Find 404 and hand over to error handler
-// app.use((req, res, next) => {
-//   next(createError(404));
-// });
-
-// Index Route
-app.get('/', (req, res) => {
-  res.send('invaild endpoint');
+// CORS middleware
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/fnad'));
+/* route handlres*/
+
+
+/**
+ * 
+ * Get list /list
+ * purpose: get all list
+ * 
+ */
+app.get('/list', (req , res ) => {
+  // regresar el array con todas las listas
+  Documento.find({}).then((documento)=> {
+      res.send(documento);
+  });
 });
-// Connecting mongoDB
-// mongoose.Promise = global.Promise;
-// mongoose.connect(dataBaseConfig.mongo, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology:true,
-//   useFindAndModify: false
-// }).then(() => {
-//     console.log('Database connected sucessfully ')
-//     console.log(Documentos.db)
-//   },
-//   error => {
-//     console.log('Could not connected to database : ' + error)
-//   }
-// )
+
+/**
+ * 
+ * Post /list
+ * pirpose mandar la informacion
+ */
+
+app.post('/list', (req , res ) => {
+  // crear una lista y regrear esa informacion con sus ID, la cual se pasara con un Json
+  let titulo = req.body.titulo;
+
+  let newTitulo = new Documento ({
+    titulo
+  });
+  newTitulo.save().then((listDoc) =>{
+
+    res.send(listDoc);
+  })
+});
 
 
+/**
+ * get update
+ * esta es para actualizar las listas
+ * 
+ */
+app.patch('/list/:id', (req , res ) => {
+  // para actualizar una lista con los nuevos valores
+  Documento.findByIdAndUpdate({ _id: req.params.id},{
+    $set: req.body
+  }).then(() => {
+    res.sendStatus(200);
+  });
+});
 
 
-run().catch(console.dir);
+/**
+ * Get delete
+ * para borrar las entradas
+ */
+app.delete('/list/:id', (req , res) => {
+//lo que queremos borrar va aqui
+  Documento.findByIdAndRemove({
+    _id: req.params.id
+  }).then((removelistDoc) => {
+    res.send(removelistDoc);
+  })
+});
+
+app.listen(8000, () => {
+  console.log("servidor escuchando en 8000");
+});

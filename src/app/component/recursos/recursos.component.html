@@ -27,66 +27,56 @@
                   </select>
                 </mat-form-field>
                 &nbsp;
-                <button mat-flat-button (click)="resetFilters()">Limpiar</button>
+                <button mat-flat-button >Limpiar</button>
+                <!-- (click)="resetFilters()" -->
             </div>
-            <p *ngIf="DocumentoData.length <= 0" class="no-data">There is no Documentos added yet!</p>
-            <div class="container" *ngIf="DocumentoData.length > 0">
+            <!-- <button class="btn btn-success" (click)="crearListaDocumentos()">Crear</button> -->
+            <div class="container">
                 <div class="mat-elevation-z8">
-                    <table mat-table [dataSource]="dataSource">
-
-                        <ng-container matColumnDef="tema">
-                            <th mat-header-cell *matHeaderCellDef> Tema</th>
-                            <td mat-cell *matCellDef="let element"> {{element.tema}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="autor">
-                            <th mat-header-cell *matHeaderCellDef> Autor(es) </th>
-                            <td mat-cell *matCellDef="let element"> {{element.autor}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="ano">
-                            <th mat-header-cell *matHeaderCellDef> Año </th>
-                            <td mat-cell *matCellDef="let element"> {{element.ano}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="titulo">
-                            <th mat-header-cell *matHeaderCellDef> Titúlo </th>
-                            <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="volumen">
-                            <th mat-header-cell *matHeaderCellDef> Volumen </th>
-                            <td mat-cell *matCellDef="let element"> {{element.volumen}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="doi">
-                            <th mat-header-cell *matHeaderCellDef> DOI </th>
-                            <td mat-cell *matCellDef="let element"> {{element.doi}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="fnad">
-                            <th mat-header-cell *matHeaderCellDef> ¿FNAD? </th>
-                            <td mat-cell *matCellDef="let element"> {{element.fnad}} </td>
-                        </ng-container>
-
-                        <ng-container matColumnDef="enlace">
-                            <th mat-header-cell *matHeaderCellDef> Enlace </th>
-                            <td mat-cell *matCellDef="let element"> {{element.enlace}} </td>
-                        </ng-container>
+                    <table> 
+                        <tr>
+                            <th>Tema</th>
+                            <th>Autor</th>
+                            <th>Año</th>
+                            <th>Titulo</th>
+                            <th>Nombre de Revista</th>
+                            <th>Editora</th>
+                            <th>Volumen</th>
+                            <th>DOI</th>
+                            <th>FNAD</th>
+                            <th>Enlace</th>
+                        </tr>
+                        <tr *ngFor="let list of lista">
+                            <td>{{ list.tema}}</td>
+                            <td>{{ list.autor}}</td>
+                            <td>{{ list.ano}}</td>
+                            <td>{{ list.titulo}}</td>
+                            <td>{{ list.nomRevista}}</td>
+                            <td>{{ list.editora}}</td>
+                            <td>{{ list.volumen}}</td>
+                            <td>{{ list.doi}}</td>
+                            <td>{{ list.fnad}}</td>
+                            <td>{{ list.enlace}}</td>
+                        </tr>
 
                         <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
                         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
                     </table>
                     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                    
                 </div>
             </div>
-
+            <!-- <div *ngFor="let list of lista">
+                <p>{{ list.titulo }}</p>
+            </div> -->
 
             <div class="propiedad">
                 <h2><strong>Propiedad Intelectual</strong></h2>
                 <p><br> Si se entiende que algún documento tiene conflictos de derecho de autor o propiedad intelectual, agradeceremos nos lo hagan saber de inmediato a <a href="mailto:info@fnad.org">info@fnad.org</a> para corregirlo. Gracias.&nbsp; </p>
             </div>
+
+            
 
         </div>
     </div>
