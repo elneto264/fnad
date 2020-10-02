@@ -16,35 +16,21 @@
 <section class="container-fluid tablacon">
     <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-12">
-
-            <div class="nameFil">
-                <mat-form-field *ngFor="let filter of filterSelectObj" style="margin-left: 15px;">
-                    <label>Filtrar por {{filter.name}}</label>
-                    <!-- <mat-label>Filter {{filter.name}}</mat-label> -->
-                    <select matNativeControl name="{{filter.columnProp}}" [(ngModel)]="filter.modelValue" (change)="filterChange(filter,$event)">
-                    <option value="">-- Select {{filter.name}} --</option>
-                    <option [value]="item" *ngFor="let item of filter.options">{{item}}</option>
-                  </select>
-                </mat-form-field>
-                &nbsp;
-                <button mat-flat-button >Limpiar</button>
-                <!-- (click)="resetFilters()" -->
-            </div>
             <!-- <button class="btn btn-success" (click)="crearListaDocumentos()">Crear</button> -->
-            <div class="container">
+            <div class="container-fluid">
                 <div class="mat-elevation-z8">
-                    <table> 
+                    <table class="table">  
                         <tr>
-                            <th>Tema</th>
-                            <th>Autor</th>
-                            <th>Año</th>
-                            <th>Titulo</th>
-                            <th>Nombre de Revista</th>
-                            <th>Editora</th>
-                            <th>Volumen</th>
-                            <th>DOI</th>
-                            <th>FNAD</th>
-                            <th>Enlace</th>
+                            <th scope="col">Tema</th>
+                            <th scope="col">Autor</th>
+                            <th scope="col">Año</th>
+                            <th scope="col">Titulo</th>
+                            <th scope="col">Nombre de Revista</th>
+                            <th scope="col">Editora</th>
+                            <th scope="col">Volumen</th>
+                            <th scope="col">DOI</th>
+                            <th scope="col">FNAD</th>
+                            <th scope="col">Enlace</th>
                         </tr>
                         <tr *ngFor="let list of lista">
                             <td>{{ list.tema}}</td>
@@ -58,13 +44,7 @@
                             <td>{{ list.fnad}}</td>
                             <td>{{ list.enlace}}</td>
                         </tr>
-
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-                    </table>
-                    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-                    
+                    </table>            
                 </div>
             </div>
             <!-- <div *ngFor="let list of lista">
