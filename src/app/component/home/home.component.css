@@ -7,17 +7,16 @@ app-header {
     padding: -5;
 }
 
-.imgportada img {
-    margin-top: 1em;
+.imgportada {
+    margin-top: 7em;
     padding: 0;
-    margin: 0.5em;
     width: 100%;
-    height: 90%;
+    height: auto;
     
 }
 
 .fnadDesc {
-    background-color: #28a745;
+    background-color: #24c239 ;
     width: 100%;
     /* border-radius: 20px; */
     margin-top: .5em;
@@ -50,7 +49,7 @@ app-header {
 }
 
 .logrodesc {
-    background-color: #28a745;
+    background-color:  #24c239 ;
     width: 100%;
     margin-top: 1.5em;
     padding: 5px;

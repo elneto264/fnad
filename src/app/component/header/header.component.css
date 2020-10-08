@@ -11,13 +11,13 @@
 
 .navbar-nav a {
     padding-top: 15px;
-    color: black;
+    color: white;
     padding: 5px;
     font-size: 12pt;
 }
 
 .barra {
-    background-color: lightgreen;
+    background-color:  #24c239 ;
     position: fixed;
     z-index: 50;
 }

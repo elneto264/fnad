@@ -1,8 +1,8 @@
+
 import { Component, OnInit, ViewChild} from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-// import { MatTableDataSource } from '@angular/material/table/table-data-source';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+
 
 
 
@@ -18,13 +18,15 @@ import { ApiService } from 'src/app/api.service';
 export class RecursosComponent implements OnInit {
 
   // dataSource = new MatTableDataSource();
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   displayedColumns: string[] = ['tema', 'autor', 'ano', 'titulo', 'volumen', 'doi', 'fnad', 'enlace'];
   filterSelectObj = [];
   filterValues = {};
 
   lista: any[];
-  constructor( private ApiService: ApiService, private route: ActivatedRoute) {
+  loading: boolean = true;
+
+  constructor( private ApiService: ApiService, private route: ActivatedRoute ) {
     
     this.filterSelectObj = [
       {
@@ -62,6 +64,7 @@ export class RecursosComponent implements OnInit {
     this.route.params.subscribe(
       (params:Params) => {
         console.log(params);
+        
       }
     )
 
@@ -69,36 +72,30 @@ export class RecursosComponent implements OnInit {
       this.lista = lista;
       
     });
-  }
 
-  
+  }
+  // getFilterObject(fullObj, key) {
+  //   let uniqChk = [];
+  //   fullObj.filter((obj) => {
+  //     if (!uniqChk.includes(obj[key])) {
+  //       uniqChk.push(obj[key]);
+  //     }
+  //     return obj;
+  //   });
+  //   return uniqChk;
+  // }
+
 
   // crearListaDocumentos(){
   //   this.ApiService.crearDocumentos('prueba a ver').subscribe(( response: any)=> {
   //       console.log(response);
   //   })
   // }
-
-
-
-
-  getFilterObject(fullObj, key) {
-    let uniqChk = [];
-    fullObj.filter((obj) => {
-      if (!uniqChk.includes(obj[key])) {
-        uniqChk.push(obj[key]);
-      }
-      return obj;
-    });
-    return uniqChk;
-  }
-
+}
 // resetFilters() {
 // this.filterValues = {};
 // this.filterSelectObj.forEach((value, key) => {
 //  value.modelValue = undefined;
 //    });
 //     this.dataSource.filter = '';
-//   }
-
-}
+// }}
