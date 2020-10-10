@@ -1,19 +1,29 @@
 .aint {
     margin-top: 8em;
     padding: 15px;
-    margin-left: 20px;
 }
 
 .aint h2 {
     text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: bolder;
 }
 
 .gmeta {
     padding-left: 20px;
-    background-color: #1ea954;
+    background-color: #4c8451;
     color: white;
 }
 
 .gmeta h2 {
     text-align: center;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: bolder;
+}
+p{
+    font-family: 'Scope One', serif;
+}
+
+li {
+    font-family: 'Scope One', serif;
 }

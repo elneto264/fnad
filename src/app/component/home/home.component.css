@@ -3,6 +3,14 @@ app-header {
     position: fixed;
 }
 
+h2{
+    font-family: 'Work Sans', sans-serif;
+    font-weight: bolder;
+}
+
+p{
+    font-family: 'Scope One', serif;
+}
 .container-fluid {
     padding: -5;
 }
@@ -16,7 +24,7 @@ app-header {
 }
 
 .fnadDesc {
-    background-color: #1ea954 ;
+    background-color: #4c8451;
     width: 100%;
     /* border-radius: 20px; */
     margin-top: .5em;
@@ -49,7 +57,7 @@ app-header {
 }
 
 .logrodesc {
-    background-color:  #1ea954 ;
+    background-color:  #4c8451 ;
     width: 100%;
     margin-top: 1.5em;
     padding: 5px;
@@ -66,4 +74,8 @@ app-header {
 .cajaAjus {
     padding-left: 2em;
     padding-right: 2em;
+}
+
+.fondo{
+    background-color:  #4c8451 ;
 }
