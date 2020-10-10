@@ -1,3 +1,12 @@
-.con {
+.titulocontacto {
     margin-top: 8em;
+    text-align: center;
+}
+
+.titulocontacto article{
+    text-align: center;
+}
+
+.con {
+    text-align: center;
 }
