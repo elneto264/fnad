@@ -17,7 +17,13 @@
     <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-12">
             <!-- <button class="btn btn-success" (click)="crearListaDocumentos()">Crear</button> -->
+       
             <div class="container-fluid">
+                <!-- barra de busqueda-->
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Escribe lo que buscas" [(ngModel)]="term">
+                </div>
+                <!-- barra de busqueda-->
                 <div class="tablaestilos">
                     <table class="table">  
                         <tr>
@@ -32,7 +38,7 @@
                             <th scope="col">FNAD</th>
                             <th scope="col">Enlace</th>
                         </tr>
-                        <tr *ngFor="let list of lista">
+                        <tr *ngFor="let list of lista | filter:term">
                             <td>{{ list.tema}}</td>
                             <td>{{ list.autor}}</td>
                             <td>{{ list.ano}}</td>
@@ -50,9 +56,6 @@
                      
                 </div>
             </div>
-            <!-- <div *ngFor="let list of lista">
-                <p>{{ list.titulo }}</p>
-            </div> -->
 
             <div class="propiedad">
                 <h2><strong>Propiedad Intelectual</strong></h2>

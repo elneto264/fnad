@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
+
 
 
 
@@ -11,16 +12,21 @@ import { Component, OnInit } from '@angular/core';
 export class ContactFormComponent implements OnInit {
 
   //FormData: FormGroup;
-  fullname: string;
-  email: string;
-  message: string;
+  // fullname: string;
+  // email: string;
+  // message: string;
 
-  constructor() { }
+ 
+
+  constructor( ) {
+
+    }
 
   
 
   ngOnInit(): void {
 
+      
     // this.FormData = this.builder.group({
     //   Fullname: new FormControl('', [Validators.required]),
     //   Email: new FormControl('', [Validators.compose([Validators.required, Validators.email])]),
@@ -28,9 +34,11 @@ export class ContactFormComponent implements OnInit {
     //   Comment: new FormControl('', [Validators.required])
     // });
   }
-  onSubmit() {
-    const allInfo = `My name is ${this.fullname}. My email is ${this.email}. My message is ${this.message}`;
-    alert(allInfo); 
-  }
+
+  // onSubmit() {
+  //   const allInfo = `My name is ${this.fullname}. My email is ${this.email}. My message is ${this.message}`;
+  //   alert(allInfo); 
+  // }
+
 
 }

@@ -18,9 +18,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
-import { ContactService } from './contact.service';
 import { AngularMaterialModule } from './material.module';
 import { ApiService } from './shared/api.service';
+
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -44,10 +45,10 @@ import { ApiService } from './shared/api.service';
     MatSelectModule,
     MatInputModule,
     HttpClientModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    Ng2SearchPipeModule
   ],
   providers: [
-    ContactService,
     ApiService
   ],
   bootstrap: [AppComponent]
