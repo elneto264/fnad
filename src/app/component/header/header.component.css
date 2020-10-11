@@ -3,35 +3,75 @@
     box-shadow: 0 0 1px;
 } */
 
+.imge{
+float: left;
+   
+}
 .logo {
     width: 25%;
 }
 
-.nav-item {
-    
-    text-align: center;
-    padding: 5px;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 1.1em;
-}
 
-.menu{
-    margin-left: 25em;
-}
-.navbar-nav a {
-    padding-top: 15px;
-    color: white;
-    padding: 5px;
-    font-size: 12pt;
-    
-}
+
 
 .barra {
     width: 100%;
-    background-color:  #4c8451 ;
-    position: fixed;
-    z-index: 50;
-    -webkit-box-shadow: 0px 1px 5px 0px rgba(87,85,87,1);
+    /* top: 0; */
+    /* background-color:  #4c8451 ; */
+    /* position: fixed;
+    z-index: 4; */
+    /* -webkit-box-shadow: 0px 1px 5px 0px rgba(87,85,87,1);
     -moz-box-shadow: 0px 1px 5px 0px rgba(87,85,87,1);
-    box-shadow: 0px 1px 5px 0px rgba(87,85,87,1);
+    box-shadow: 0px 1px 5px 0px rgba(87,85,87,1); */
+}
+
+.barra li {
+    display: inline-block;
+   
+}
+
+.barra ul{
+    float: inline-end;
+    text-align: center;
+    padding: 0;
+    margin: 0
+}
+.nav-item {
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 12pt;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation-items a {
+    display: block;
+    color: white; 
+    display: inline-block;
+    text-align: center;
+     
+}
+
+.navigation-items a:hover, a:active{
+    color: black;
+}
+
+.custom-toolbar{
+    background-color:  #4c8451 ;
+    z-index: 3;
+    position: fixed;
+}
+
+.e-tooltip-wrap .e-tip-content {
+    color: white;
+    font-size: 12px;
+    background-color: black;
+    padding: 5px;
+}
+
+@media(max-width: 959px) {
+    mat-toolbar {
+        border-radius: 0px;
+    }
 }

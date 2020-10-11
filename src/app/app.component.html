@@ -1,4 +1,13 @@
-<app-header ></app-header>
-
-<router-outlet>
-</router-outlet>
+<mat-sidenav-container autosize="true">
+    <mat-sidenav [fixedInViewport]="false" #sidenav role="navigation">
+        <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>   
+        <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+        <main>
+            <div [@myAnimation]="o.isActivated ? o.activatedRoute : ''">
+                <router-outlet #o="outlet"></router-outlet>
+            </div>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>

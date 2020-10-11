@@ -1,11 +1,41 @@
-<section class="container-fluid">
+
+<mat-toolbar class="custom-toolbar">
+    <div fxHide.gt-xs>
+        <button mat-icon-button (click)="onToggleSidenav()" >
+            <mat-icon class="custom-icon">menu</mat-icon>
+        </button>
+    </div>
+    
+   
+    <div class="barra" fxFlex fxLayout fxLayoutAlign="space-between center" fxHide.xs >
+        <div class="imge" >
+            <a routerLink="inicio" role="button"><img class="logo" src="assets/img/logo.png" alt="logofnad"></a>
+        </div>
+                    
+            <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="inicio" role="button">INICIO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="areas" role="button">ÁREAS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="recursos" role="button">RECURSOS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="contacto" role="button">CONTACTO</a>
+                </li>
+            </ul>
+    </div>
+</mat-toolbar>
+<!-- <section class="container-fluid">
     <div class="row">
         <nav class="navbar navbar-expand-lg navbar-light barra">
             <div>
                 <a class="navbar-brand" href="#"><img class="logo" src="assets/img/logo.png" alt="logofnad"></a>
             </div>
             
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
             <div class="collapse navbar-collapse menu" id="navbarNavDropdown">
@@ -26,8 +56,5 @@
             </div>
 
         </nav>
-
     </div>
-
-</section>
-
+</section> -->

@@ -11,17 +11,20 @@ import { HeaderComponent } from './component/header/header.component';
 import { HomeComponent } from './component/home/home.component';
 import { RecursosComponent } from './component/recursos/recursos.component';
 import { ListaComponent } from "./component/lista/lista.component";
+import { SidenavListComponent } from './component/sidenav-list/sidenav-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularMaterialModule } from './material.module';
 import { ApiService } from './shared/api.service';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     HeaderComponent,
     HomeComponent,
     RecursosComponent,
-    ListaComponent
+    ListaComponent,
+    SidenavListComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   imports: [
@@ -41,12 +45,15 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatTableModule,
     MatSelectModule,
     MatInputModule,
     HttpClientModule,
     AngularMaterialModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgbModule,
+    MatToolbarModule,
+    MaterialModule,
+    FlexLayoutModule
   ],
   providers: [
     ApiService
