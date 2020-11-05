@@ -8,7 +8,7 @@ float: left;
    
 }
 .logo {
-    width: 25%;
+    width: 28%;
 }
 
 
@@ -41,6 +41,7 @@ float: left;
     text-decoration: none;
     font-family: 'Work Sans', sans-serif;
     font-size: 12pt;
+    font-weight: bold;
     padding: 0;
     margin: 0;
 }

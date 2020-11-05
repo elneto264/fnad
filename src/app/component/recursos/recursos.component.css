@@ -38,3 +38,7 @@ table td {
 table th {
     padding: 5px;
 }
+
+th.mat-sort-header-sorted {
+    color: black;
+  }

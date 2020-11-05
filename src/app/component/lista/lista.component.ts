@@ -13,12 +13,12 @@ export class ListaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  crearLista(titulo: string){ //va a cambiar
-    this.ApiService.crearDocumentos(titulo).subscribe(( response: any)=> {
-        console.log(response);
-        //desde aqui se navega hacia el listado
-    })
-  }
+  // crearLista(titulo: string){ // va a cambiar
+  //   this.ApiService.crearDocumentos(titulo).subscribe(( response: any)=> {
+  //       console.log(response);
+  //       // desde aqui se navega hacia el listado
+  //   });
+  // }
 
 
 }

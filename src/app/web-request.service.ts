@@ -9,13 +9,19 @@ export class WebRequestService {
 
   readonly ROOT_URI;
 
-  constructor(private http: HttpClient) { 
-    this.ROOT_URI = 'http://localhost:8000';
+  constructor(private http: HttpClient) {
+    // this.ROOT_URI = 'https://fnadapi.herokuapp.com/list';
+
+    
   }
 
-  get(uri: string){
-    return this.http.get(`${this.ROOT_URI}/${uri}`);
+  public get(uri: string){
+    return this.http.get("https://fnadapi.herokuapp.com/list");
   }
+
+ /* get(uri: string){
+    return this.http.get(`${this.ROOT_URI}/${uri}`);
+  } 
 
   post(uri: string, payload: Object){
     return this.http.post(`${this.ROOT_URI}/${uri}`, payload);
@@ -25,8 +31,8 @@ export class WebRequestService {
     return this.http.patch(`${this.ROOT_URI}/${uri}`, payload);
   }
 
-  delete(uri:string) {
+  delete(uri: string) {
     return this.http.delete(`${this.ROOT_URI}/${uri}`);
-  }
+  } */
 
 }

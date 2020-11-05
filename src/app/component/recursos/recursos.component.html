@@ -16,14 +16,80 @@
 <section class="container-fluid tablacon">
     <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-12">
+
+            <mat-form-field>
+                <mat-label>Buscar</mat-label>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="escriba aquí" #input>
+              </mat-form-field>
+
+            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+                
+                <ng-container matColumnDef="tema">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Tema </th>
+                  <td mat-cell *matCellDef="let element"> {{element.tema}} </td>
+                </ng-container>
+              
+                
+                <ng-container matColumnDef="autor">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Autor </th>
+                  <td mat-cell *matCellDef="let element"> {{element.autor}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="editora">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Editora </th>
+                  <td mat-cell *matCellDef="let element"> {{element.editora}} </td>
+                </ng-container>
+              
+                
+                <ng-container matColumnDef="ano">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Año </th>
+                  <td mat-cell *matCellDef="let element"> {{element.ano}} </td>
+                </ng-container>
+              
+                
+                <ng-container matColumnDef="titulo">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
+                  <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="volumen">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Vol: No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.volumen}} </td>
+                  </ng-container>
+                
+                  
+                  <ng-container matColumnDef="doi">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> DOI </th>
+                    <td mat-cell *matCellDef="let element"> {{element.doi}} </td>
+                  </ng-container>
+                
+                  
+                  <ng-container matColumnDef="fnad">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> FNAD </th>
+                    <td mat-cell *matCellDef="let element"> {{element.fnad}} </td>
+                  </ng-container>
+                
+                  
+                  <ng-container matColumnDef="enlace">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Descarga</th>
+                    <td mat-cell *matCellDef="let element"><a [href]="element.enlace" target="_blank"> {{element.enlace | shortUrl}}</a> </td>
+                  </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+              
+              
             <!-- <button class="btn btn-success" (click)="crearListaDocumentos()">Crear</button> -->
        
-            <div class="container-fluid">
-                <!-- barra de busqueda-->
+            <!-- <div class="container-fluid">
+                
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Escribe lo que buscas" [(ngModel)]="term">
                 </div>
-                <!-- barra de busqueda-->
+                
                 <div class="tablaestilos">
                     <table class="table">  
                         <tr>
@@ -55,7 +121,7 @@
                       
                      
                 </div>
-            </div>
+            </div> -->
 
             <div class="propiedad">
                 <h2><strong>Propiedad Intelectual</strong></h2>

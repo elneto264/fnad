@@ -10,10 +10,10 @@ export class ApiService {
 
   constructor( private WebReqService: WebRequestService) { }
 
-  crearDocumentos(titulo: string){
-    // aqui creamos el request para hacer la lista
-    return this.WebReqService.post('list', { titulo });
-  }
+  // crearDocumentos(titulo: string){
+  //   // aqui creamos el request para hacer la lista
+  //   return this.WebReqService.post('list', { titulo });
+  // }
 
 
   getDocumentos(){

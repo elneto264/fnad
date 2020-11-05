@@ -25,6 +25,9 @@ import { ApiService } from './shared/api.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ShortUrlPipe } from './pipes/short-url.pipe';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HomeComponent,
     RecursosComponent,
     ListaComponent,
+    ShortUrlPipe,
     SidenavListComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
@@ -53,6 +57,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgbModule,
     MatToolbarModule,
     MaterialModule,
+    MatSortModule,
+    MatFormFieldModule,
     FlexLayoutModule
   ],
   providers: [
